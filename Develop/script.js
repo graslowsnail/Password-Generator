@@ -36,7 +36,7 @@ function test(temp) {
 }
 
 // makes password, to length of user input 
-function makeid(length) {
+function makePassword(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
@@ -69,4 +69,4 @@ temp = getLength(lengthInput);
 // console.log(temp);
 test(temp);
 
-console.log(makeid(temp));
+console.log(makePassword(temp));
