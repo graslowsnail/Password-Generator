@@ -1,53 +1,107 @@
-// Assignment code here
-// var items = [254, 45, 212, 365, 2543];
-// var itemsTwo = [1, 2, 3, 4, 5, 6, 7, 8,];
-// var length;
-// function random_item(items) {
-//     return items[Math.floor(Math.random() * items.length)];
-// }
+
+var lengthInput;
+var numInput;
 
 function getLength(lengthInput) {
-
+    lengthInput = prompt("Choose desired length between 8 & 128 char long");
     // conver answer to actual number
     lengthInt = parseInt(lengthInput);
 
     //validate prompt answer
     if (lengthInput === "" || lengthInput === null) {
         window.alert("You need to provide a valid input. try again");
-        return;
+        return getLength();
     }
     if (isNaN(lengthInput)) {
         window.alert("please enter a number");
-        return;
+        return getLength();
     }
     if (lengthInt < 8 || lengthInt > 128) {
         window.alert("You need to pick a number between 8 & 128");
-        return;
+        return getLength();
     }
     else {
-        // console.log(lengthInput);
         return lengthInput;
     }
 }
+// numInput = confirm(" your password will have numbers");
 
-// test function
-function test(temp) {
-    console.log("Password is " + temp + " characters long");
-}
+function getRandomSymbol() {
+    const getSymobl = confirm("Add special characters in password?");
 
-// makes password, to length of user input 
-function makePassword(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
+    if (getSymobl) {
+        // console.log("your password will have special characters.");
+
+        const symbols = '!@#$%^&*_?<>-=+{}[]:;.,/';
+        return symbols[Math.floor(Math.random() * symbols.length)];
     }
-    return result;
+    else {
+        console.log("your password will not have special characters.")
+    }
+
+    // const symbols = '!@#$%^&*_?<>-=+{}[]:;.,/';
+    // return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// console.log(random_item(items));
+function getRandomLowerCase() {
+    const getLowerCase = confirm("add Lower case latters in password?");
+
+    if (getLowerCase) {
+        // console.log("your password wil contain lowercase ");
+
+        return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    }
+    else {
+        console.log("your password will not have lowercase letters");
+    }
+
+}
+
+function getRandomUppercase() {
+    const getUpperCase = confirm("add UPPER CASE latters in password?");
+
+    if (getUpperCase) {
+        // console.log("your password will contain UPPER CASE ");
+
+        return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    }
+    else {
+        console.log("your password will not have lowercase letters");
+    }
+
+}
+
+function getRandomNumber(numInput) {
+    // const getNum = confirm(" your password will have numbers");
+    numInput;
+    if (numInput = true) {
+        // console.log("WILL HAVE NUM");
+        char = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+        return char;//String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+
+    } else {
+        console.log("CONTAIN NO NUM.")
+    }
+}
+
+function generatePassword(length) {
+
+    for (let i = 0; i < length; i++) {
+
+        console.log(getRandomNumber() + getRandomNumber());
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -56,17 +110,53 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
     // var password = generatePassword();
     // var password = random_item(items);
-    var passwordText = document.querySelector("#password");
+    // var passwordText = document.querySelector("#password");
+    // passwordText.value = password;
 
-    passwordText.value = password;
 }
 
+
+
+length = getLength(lengthInput);
+numInput = confirm(" do you want to include numbers?");
+
+console.log("password length " + length);
+console.log(getRandomSymbol());
+console.log(getRandomLowerCase());
+console.log(getRandomUppercase());
+console.log(getRandomNumber());
+
+console.log(generatePassword(length));
+
+
 // Add event listener to generate button
-
 // generateBtn.addEventListener("click", getLength());
-var lengthInput = prompt("Choose desired length between 8 & 128 char long");
-temp = getLength(lengthInput);
 // console.log(temp);
-test(temp);
 
-console.log(makePassword(temp));
+
+
+
+
+// ######## prints random characters from characters const
+
+// const characters = '!@#$%^&*_?<>';
+// function generateString(length) {
+//     let result = '';
+//     const charactersLength = characters.length;
+//     for (let i = 0; i < length; i++) {
+//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     }
+//     return result;
+// }
+// console.log(generateString(length));
+
+
+
+
+
+ // for (let i = 0; i < length; i++) {
+
+    //     console.log(getRandomNumber() + getRandomUppercase());
+
+    //     // return console.log();
+    // }
