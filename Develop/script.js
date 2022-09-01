@@ -27,71 +27,50 @@ function getLength(lengthInput) {
         return lengthInput;
     }
 }
-// numInput = confirm(" your password will have numbers");
 
 function getRandomSymbol() {
-    const getSymobl = confirm("Add special characters in password?");
-
-    if (getSymobl) {
-        // console.log("your password will have special characters.");
-
+    if (symbolInput) {
         const symbols = '!@#$%^&*_?<>-=+{}[]:;.,/';
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
     else {
         console.log("your password will not have special characters.")
+        return "";
     }
-
-    // const symbols = '!@#$%^&*_?<>-=+{}[]:;.,/';
-    // return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 function getRandomLowerCase() {
-    const getLowerCase = confirm("add Lower case latters in password?");
-
-    if (getLowerCase) {
-        // console.log("your password wil contain lowercase ");
-
+    if (lowerCaseInput === true) {
         return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
     }
     else {
         console.log("your password will not have lowercase letters");
+        return "";
     }
-
 }
 
 function getRandomUppercase() {
-    const getUpperCase = confirm("add UPPER CASE latters in password?");
-
-    if (getUpperCase) {
-        // console.log("your password will contain UPPER CASE ");
-
+    if (upperCaseInput === true) {
         return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
     }
     else {
         console.log("your password will not have lowercase letters");
+        return "";
     }
 
 }
 
 function getRandomNumber() {
-    // const getNum = confirm(" your password will have numbers");
-    if (numInput = true) {
-        // console.log("WILL HAVE NUM");
-        char = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-        return char;//String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+    if (numInput === true) {
+        return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 
     } else {
-        console.log("CONTAIN NO NUM.")
+        return '';
     }
 }
 
 function generatePassword(length) {
-    // var lowerCase = getRandomLowerCase();
-    // var upperCase = getRandomUppercase();
-    // var symbol = getRandomSymbol();
     var password = '';
-
 
     while (password.length < length) {
         for (let i = 0; i < length; i++) {
@@ -126,9 +105,9 @@ function writePassword() {
 
 
 length = getLength(lengthInput);
-// symbolInput = confirm(" do you want to include Symbols?");
-// lowerCaseInput = confirm("include lower case letters?  ");
-// upperCaseInput = confirm("include upper case letters")
+symbolInput = confirm(" do you want to include Symbols?");
+lowerCaseInput = confirm("include lower case letters?  ");
+upperCaseInput = confirm("include upper case letters")
 numInput = confirm(" do you want to include numbers?");
 
 
