@@ -1,6 +1,9 @@
 
 var lengthInput;
 var numInput;
+var symbolInput;
+var lowerCaseInput;
+var upperCaseInput;
 
 function getLength(lengthInput) {
     lengthInput = prompt("Choose desired length between 8 & 128 char long");
@@ -71,9 +74,8 @@ function getRandomUppercase() {
 
 }
 
-function getRandomNumber(numInput) {
+function getRandomNumber() {
     // const getNum = confirm(" your password will have numbers");
-    numInput;
     if (numInput = true) {
         // console.log("WILL HAVE NUM");
         char = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
@@ -85,17 +87,23 @@ function getRandomNumber(numInput) {
 }
 
 function generatePassword(length) {
+    // var lowerCase = getRandomLowerCase();
+    // var upperCase = getRandomUppercase();
+    // var symbol = getRandomSymbol();
+    var password = '';
 
-    for (let i = 0; i < length; i++) {
 
-        console.log(getRandomNumber() + getRandomNumber());
+    while (password.length < length) {
+        for (let i = 0; i < length; i++) {
+            while (password.length < length) {
+                password += getRandomNumber() + getRandomLowerCase() + getRandomUppercase() + getRandomSymbol();
+
+            }
+        }
+        console.log("password length chekc " + password.length);
+        return password;
     }
-
-
 }
-
-
-
 
 
 
@@ -118,7 +126,12 @@ function writePassword() {
 
 
 length = getLength(lengthInput);
+// symbolInput = confirm(" do you want to include Symbols?");
+// lowerCaseInput = confirm("include lower case letters?  ");
+// upperCaseInput = confirm("include upper case letters")
 numInput = confirm(" do you want to include numbers?");
+
+
 
 console.log("password length " + length);
 console.log(getRandomSymbol());
