@@ -34,8 +34,7 @@ function getRandomSymbol() {
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
     else {
-        console.log("your password will not have special characters.")
-        return "";
+        return '';
     }
 }
 
@@ -44,8 +43,7 @@ function getRandomLowerCase() {
         return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
     }
     else {
-        console.log("your password will not have lowercase letters");
-        return "";
+        return '';
     }
 }
 
@@ -54,8 +52,7 @@ function getRandomUppercase() {
         return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
     }
     else {
-        console.log("your password will not have lowercase letters");
-        return "";
+        return '';
     }
 
 }
@@ -63,7 +60,6 @@ function getRandomUppercase() {
 function getRandomNumber() {
     if (numInput === true) {
         return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-
     } else {
         return '';
     }
@@ -72,54 +68,56 @@ function getRandomNumber() {
 function generatePassword(length) {
     var password = '';
 
-    while (password.length < length) {
-        for (let i = 0; i < length; i++) {
-            while (password.length < length) {
-                password += getRandomNumber() + getRandomLowerCase() + getRandomUppercase() + getRandomSymbol();
+    if (!(getRandomLowerCase() || getRandomUppercase() || getRandomNumber() || getRandomSymbol())) {
+        window.alert("please choose at least one char");
+    } else {
 
+        while (password.length < length) {
+            for (let i = 0; i < length; i++) {
+                while (password.length < length) {
+                    password += getRandomNumber() + getRandomLowerCase() + getRandomUppercase() + getRandomSymbol();
+                }
             }
+            console.log("password length chekc " + password.length);
+            return password;
         }
-        console.log("password length chekc " + password.length);
-        return password;
     }
 }
-
-
-
-
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
-    // var password = generatePassword();
-    // var password = random_item(items);
-    // var passwordText = document.querySelector("#password");
-    // passwordText.value = password;
+
+    length = getLength(lengthInput);
+    symbolInput = confirm(" do you want to include Symbols?");
+    lowerCaseInput = confirm("include lower case letters?  ");
+    upperCaseInput = confirm("include upper case letters")
+    numInput = confirm(" do you want to include numbers?");
+
+    var password = generatePassword(length);
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password
 
 }
 
 
-
-length = getLength(lengthInput);
-symbolInput = confirm(" do you want to include Symbols?");
-lowerCaseInput = confirm("include lower case letters?  ");
-upperCaseInput = confirm("include upper case letters")
-numInput = confirm(" do you want to include numbers?");
+// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
 
 
 
-console.log("password length " + length);
-console.log(getRandomSymbol());
-console.log(getRandomLowerCase());
-console.log(getRandomUppercase());
-console.log(getRandomNumber());
 
-console.log(generatePassword(length));
 
+// console.log("password length " + length);
+// console.log(getRandomSymbol());
+// console.log(getRandomLowerCase());
+// console.log(getRandomUppercase());
+// console.log(getRandomNumber());
+
+// console.log(generatePassword(length));
+
+generateBtn.addEventListener("click", writePassword);
 
 // Add event listener to generate button
 // generateBtn.addEventListener("click", getLength());
